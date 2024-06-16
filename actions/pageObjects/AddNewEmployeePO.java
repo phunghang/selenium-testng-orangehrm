@@ -3,42 +3,42 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import pageUIs.AddEmployeeUI;
 
-public class AddNewEmployeePO extends BasePage{
+public class AddNewEmployeePO extends BaseActions {
 	private WebDriver driver;
 
 	public AddNewEmployeePO(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
-	public void enterToFirstnameTextbox(String string) {
-		// TODO Auto-generated method stub
-		
+	public void enterToFirstnameTextbox(String firstName) {
+		waitForElementVisible(driver, AddEmployeeUI.FIRST_NAME_TEXTBOX);
+		sendkeyToElement(driver, AddEmployeeUI.FIRST_NAME_TEXTBOX, firstName);
+
 	}
 
-	public void enterToMiddlenameTextbox(String string) {
-		// TODO Auto-generated method stub
-		
+	public void enterToMiddlenameTextbox(String middleName) {
+		waitForElementVisible(driver, AddEmployeeUI.MIDDLE_NAME_TEXTBOX);
+		sendkeyToElement(driver, AddEmployeeUI.MIDDLE_NAME_TEXTBOX, middleName);
+
 	}
 
-	public void enterToLastnameTextbox(String string) {
-		// TODO Auto-generated method stub
-		
+	public void enterToLastnameTextbox(String lastName) {
+		waitForElementVisible(driver, AddEmployeeUI.LAST_NAME_TEXTBOX);
+		sendkeyToElement(driver, AddEmployeeUI.LAST_NAME_TEXTBOX, lastName);
+
 	}
 
 	public String getEmployeeId() {
-		// TODO Auto-generated method stub
-		return null;
+		return getElementAtributeValue(driver, AddEmployeeUI.EMPLOYEE_ID_TEXTBOX, "value");
 	}
 
 	public void clickToSaveBt() {
-		// TODO Auto-generated method stub
-		
+		waitForElementClickable(driver, AddEmployeeUI.SAVE_BT);
+		clickToElement(driver, AddEmployeeUI.SAVE_BT);
 	}
 
-	public boolean isSucessMsgDisplayed(String string) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 }

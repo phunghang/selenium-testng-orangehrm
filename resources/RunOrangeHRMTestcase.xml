@@ -13,7 +13,6 @@
 			<class name="orangehrm.pim.PIM_01_Employee" />
 		</classes>
 	</test>
-
 	<test name="Run on edge">
 		<parameter name="browser" value="edge" />
 		<classes>

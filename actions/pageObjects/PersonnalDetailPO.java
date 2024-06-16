@@ -3,37 +3,41 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
+import pageUIs.PersonnalDetailUI;
 
-public class PersonnalDetailPO extends BasePage{
+public class PersonnalDetailPO extends BaseActions {
 	private WebDriver driver;
 
 	public PersonnalDetailPO(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
 	public String getFirstnameValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, PersonnalDetailUI.FIRST_NAME_TEXTBOX);
+		return getElementAtributeValue(driver, PersonnalDetailUI.FIRST_NAME_TEXTBOX, "value");
 	}
 
 	public String getMiddlenameValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, PersonnalDetailUI.MIDDLE_NAME_TEXTBOX);
+		return getElementAtributeValue(driver, PersonnalDetailUI.MIDDLE_NAME_TEXTBOX, "value");
 	}
 
 	public String getLastnameValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, PersonnalDetailUI.LAST_NAME_TEXTBOX);
+		return getElementAtributeValue(driver, PersonnalDetailUI.LAST_NAME_TEXTBOX, "value");
 	}
 
 	public String getEmployeeIdValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, PersonnalDetailUI.EMPLOYEE_ID_TEXTBOX);
+		return getElementAtributeValue(driver, PersonnalDetailUI.EMPLOYEE_ID_TEXTBOX, "value");
 	}
 
 	public EmployeeListPO clickToEmployeeListBt() {
-		// TODO Auto-generated method stub
-		return null;
+		clickToElement(driver, PersonnalDetailUI.EMPLOYEE_LIST_BT);
+		waitIconLoadingInvisible();
+		return PageGeneratorManager.getEmployeeListPO(driver);
 	}
 
 }

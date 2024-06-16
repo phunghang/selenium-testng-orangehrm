@@ -3,32 +3,34 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
+import pageUIs.EmployeeListUI;
 
-public class EmployeeListPO extends BasePage{
+public class EmployeeListPO extends BaseActions{
 	private WebDriver driver;
 
 	public EmployeeListPO(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
 	public AddNewEmployeePO clickToAddBt() {
-		// TODO Auto-generated method stub
-		return null;
+		clickToElement(driver, EmployeeListUI.ADD_EMPLOYEE_BT);
+		waitIconLoadingInvisible();
+		return PageGeneratorManager.getAddEmployeePO(driver);
 	}
 
 	public void enterToEmployeeIdSearchTextbox(String employeeId) {
-		// TODO Auto-generated method stub
+		waitForElementVisible(driver, EmployeeListUI.EMPLOYEE_ID_TEXTBOX);
+		sendkeyToElement(driver, EmployeeListUI.EMPLOYEE_ID_TEXTBOX, employeeId);
 		
 	}
 
 	public void clickToSearchBt() {
-		// TODO Auto-generated method stub
+		waitForElementClickable(driver, EmployeeListUI.SEARCH_BT);
+		clickToElement(driver, EmployeeListUI.SEARCH_BT);
+		waitIconLoadingInvisible();
 		
-	}
-
-	public boolean isValueDisplayedAtColumnName(String string, String employeeId) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }
