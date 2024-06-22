@@ -3,8 +3,6 @@ package commons;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,11 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
 	private WebDriver driver;
-	protected final Logger log;
-
-	protected BaseTest() {
-		this.log = LogManager.getLogger(getClass());
-	}
 
 	public WebDriver getDriver() {
 		return driver;
@@ -51,10 +44,8 @@ public class BaseTest {
 		String cmd = null;
 		try {
 			String osName = GlobalConstants.OS_NAME.toLowerCase();
-			log.info("OS name = " + osName);
 
 			String driverInstanceName = driver.toString().toLowerCase();
-			log.info("Driver instance name = " + driverInstanceName);
 
 			String browserDriverName = null;
 
@@ -87,7 +78,7 @@ public class BaseTest {
 				driver.quit();
 			}
 		} catch (Exception e) {
-			log.info(e.getMessage());
+
 		} finally {
 			try {
 				// Thực thi câu lệnh cmd
